@@ -30,7 +30,7 @@ func writeError(w http.ResponseWriter, err error) {
 }
 
 func createDatabase() *sql.DB {
-	db, err := sql.Open("mysql", "root:Cast7371@/Grupo?parseTime=true")
+	db, err := sql.Open("mysql", "root:xxxxxxxxx/Grupo?parseTime=true")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -148,16 +148,7 @@ func (app *Application) AuthHandler(c *gin.Context) {
 		Name:  u.Name,
 		Email: u.Email,
 	})
-	// if _, mongoErr := db.LoadUser(u.Email); mongoErr == nil {
-	// 	seen = true
-	// } else {
-	// 	err = db.SaveUser(&u)
-	// 	if err != nil {
-	// 		log.Println(err)
-	// 		c.HTML(http.StatusBadRequest, "error.tmpl", gin.H{"message": "Error while saving user. Please try again."})
-	// 		return
-	// 	}
-	// }
+	
 	c.HTML(http.StatusOK, "battle.tmpl", gin.H{"email": u.Email, "seen": seen})
 }
 
@@ -346,5 +337,3 @@ func (app *Application) AccountHandler(c *gin.Context) {
 	w.Write(data)
 }
 
-//client secret : BgsuRaKdCLHI51ySU6p-zEfp
-//client ID : 411040242308-qkl164l03pfeukholtaur1nmdvvcjll5.apps.googleusercontent.com
